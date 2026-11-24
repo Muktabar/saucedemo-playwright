@@ -4,6 +4,8 @@ Dieses Projekt enthält End-to-End-Regressionstests für den [SauceDemo-Shop](ht
 
 Die Testsuite umfasst derzeit 29 Szenarien. Standardmäßig führt Playwright jedes Szenario in Chromium, Firefox und WebKit aus. Dadurch entstehen insgesamt 87 browserbezogene Testläufe.
 
+Der zugehörige [Testabdeckungsplan (Excel)](docs/Testabdeckungsplan.xlsx) liegt im Verzeichnis `docs`. Er beschreibt alle 29 Szenarien einschließlich Priorität, Testdaten, Ablauf und erwartetem Ergebnis.
+
 ## Projektstruktur
 
 ```text
