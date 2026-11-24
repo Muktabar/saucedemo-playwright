@@ -1,53 +1,53 @@
-# SauceDemo Playwright Tests
+# SauceDemo-Tests mit Playwright
 
-End-to-end regression tests for the [SauceDemo shop](https://www.saucedemo.com/), written in TypeScript with Playwright Test.
+Dieses Projekt enthält End-to-End-Regressionstests für den [SauceDemo-Shop](https://www.saucedemo.com/). Die Tests sind mit TypeScript und Playwright Test geschrieben.
 
-The suite currently has 29 scenarios. By default, Playwright runs each scenario in Chromium, Firefox, and WebKit, for 87 browser-specific test runs in total.
+Die Testsuite umfasst derzeit 29 Szenarien. Standardmäßig führt Playwright jedes Szenario in Chromium, Firefox und WebKit aus. Dadurch entstehen insgesamt 87 browserbezogene Testläufe.
 
-## Project layout
+## Projektstruktur
 
 ```text
 tests/
 ├── auth/
-│   └── login.spec.ts       # Login, validation, logout, and access checks
+│   └── login.spec.ts       # Anmeldung, Validierung, Abmeldung und Zugriffskontrolle
 ├── inventory/
-│   └── products.spec.ts    # Product list, sorting, and product details
+│   └── products.spec.ts    # Produktliste, Sortierung und Produktdetails
 ├── cart/
-│   └── cart.spec.ts        # Adding, removing, and reviewing cart items
+│   └── cart.spec.ts        # Produkte zum Warenkorb hinzufügen, daraus entfernen und prüfen
 ├── checkout/
-│   └── checkout.spec.ts    # Checkout information, order review, and completion
-└── support.ts              # Shared login helpers
+│   └── checkout.spec.ts    # Checkout-Angaben, Bestellübersicht und Bestellabschluss
+└── support.ts              # Gemeinsam verwendete Hilfsfunktionen für die Anmeldung
 
-playwright.config.ts        # Test settings, target URL, browsers, and HTML reporter
-package.json                # Project dependencies
-.gitignore                  # Excludes generated reports and test artifacts
+playwright.config.ts        # Testeinstellungen, Ziel-URL, Browser und HTML-Bericht
+package.json                # Abhängigkeiten des Projekts
+.gitignore                  # Schließt generierte Berichte und Testdateien aus Git aus
 ```
 
-Tests are grouped by feature. Their IDs (for example, `AUTH-01` or `CHK-05`) correspond to the coverage plan. Tags such as `@smoke`, `@negative`, and `@regression` help select test groups.
+Die Tests sind nach Funktionsbereichen geordnet. Ihre IDs, zum Beispiel `AUTH-01` oder `CHK-05`, beziehen sich auf den Testabdeckungsplan. Tags wie `@smoke`, `@negative` und `@regression` helfen dabei, bestimmte Testgruppen auszuwählen.
 
-## Before running
+## Vor der Ausführung
 
-From a fresh clone, run `npm ci` once to install this repository's locked project dependencies. The commands below use `npx.cmd` in Windows PowerShell; in Command Prompt, macOS, or Linux, use `npx` instead.
+Nach einem frischen Klon des Repositorys installieren Sie die festgelegten Projektabhängigkeiten einmal mit `npm ci`. Die folgenden Befehle verwenden `npx.cmd` in Windows PowerShell. In der Eingabeaufforderung, unter macOS oder unter Linux verwenden Sie stattdessen `npx`.
 
 ```powershell
 npm ci
 ```
 
-If a test reports that a browser executable is missing, install the browser versions required by this project's Playwright version:
+Falls Playwright meldet, dass ein benötigter Browser fehlt, installieren Sie die passenden Browser-Versionen für die Playwright-Version dieses Projekts:
 
 ```powershell
 npx.cmd playwright install
 ```
 
-## Run tests
+## Tests ausführen
 
-Run the whole suite in all configured browsers:
+Führen Sie die gesamte Testsuite in allen konfigurierten Browsern aus:
 
 ```powershell
 npx.cmd playwright test
 ```
 
-Run the suite in only one browser:
+Führen Sie die Tests nur in einem Browser aus:
 
 ```powershell
 npx.cmd playwright test --project=chromium
@@ -55,13 +55,13 @@ npx.cmd playwright test --project=firefox
 npx.cmd playwright test --project=webkit
 ```
 
-Run only one spec file:
+Führen Sie nur eine bestimmte Testdatei aus:
 
 ```powershell
 npx.cmd playwright test tests/auth/login.spec.ts
 ```
 
-Run one scenario by its ID, or select tests by tag:
+Wählen Sie ein Szenario anhand seiner ID oder Tests anhand eines Tags aus:
 
 ```powershell
 npx.cmd playwright test --grep "AUTH-01"
@@ -70,34 +70,34 @@ npx.cmd playwright test --grep "@negative"
 npx.cmd playwright test --grep "@regression"
 ```
 
-Combine filters to run a tagged group in one browser:
+Sie können Filter kombinieren, um beispielsweise alle Smoke-Tests nur in Chromium auszuführen:
 
 ```powershell
 npx.cmd playwright test --grep "@smoke" --project=chromium
 ```
 
-By default, tests run headlessly. Add `--headed` to watch the browser while tests run:
+Standardmäßig laufen die Tests ohne sichtbares Browserfenster. Mit `--headed` können Sie die Browseraktionen während des Testlaufs beobachten:
 
 ```powershell
 npx.cmd playwright test --project=chromium --headed
 ```
 
-## HTML report
+## HTML-Bericht
 
-The Playwright HTML report is generated automatically after each test run in `playwright-report/`. The folder is ignored by Git, so generated report files are not committed.
+Playwright erstellt nach jedem Testlauf automatisch einen HTML-Bericht im Ordner `playwright-report/`. Dieser Ordner ist in `.gitignore` eingetragen, damit generierte Berichte nicht ins Repository aufgenommen werden.
 
-Open the most recent report in your browser:
+Öffnen Sie den Bericht des letzten Testlaufs im Browser:
 
 ```powershell
 npx.cmd playwright show-report
 ```
 
-Expand a spec file to see its test results and browser labels. Select a test to inspect its result, errors, and recorded steps. The report command starts a local server; press **Ctrl+C** in that terminal when you are done viewing it.
+Klappen Sie eine Testdatei auf, um die Ergebnisse und Browsernamen zu sehen. Wenn Sie einen Test auswählen, können Sie das Ergebnis, mögliche Fehler und die aufgezeichneten Schritte prüfen. Der Befehl startet dafür einen lokalen Webserver. Beenden Sie ihn mit **Strg+C**, wenn Sie den Bericht nicht mehr ansehen.
 
-If the report says port `9323` is already in use, stop the earlier report server with **Ctrl+C** in its terminal, then run `show-report` again.
+Falls der Bericht meldet, dass Port `9323` bereits verwendet wird, beenden Sie den vorherigen Berichtsserver mit **Strg+C** in seinem Terminal und führen Sie `show-report` erneut aus.
 
-## Notes
+## Hinweise
 
-- The configured base URL is `https://www.saucedemo.com/` in `playwright.config.ts`.
-- Chromium, Firefox, and WebKit are Playwright browser projects. WebKit is the browser engine used by Safari; the WebKit project does not launch Apple Safari.
-- `test-results/` contains run artifacts and is also ignored by Git.
+- Die Zieladresse ist in `playwright.config.ts` als `https://www.saucedemo.com/` festgelegt.
+- Chromium, Firefox und WebKit sind Playwright-Browserprojekte. WebKit ist die Browser-Engine, die auch Safari verwendet. Das WebKit-Projekt startet jedoch nicht Apple Safari.
+- Der Ordner `test-results/` enthält Dateien aus den Testläufen und ist ebenfalls von Git ausgeschlossen.
