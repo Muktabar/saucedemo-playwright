@@ -25,7 +25,7 @@ package.json                # Abhängigkeiten des Projekts
 .gitignore                  # Schließt generierte Berichte und Testdateien aus Git aus
 ```
 
-Die Tests sind nach Funktionsbereichen geordnet. Ihre IDs, zum Beispiel `AUTH-01` oder `CHK-05`, beziehen sich auf den Testabdeckungsplan. Tags wie `@smoke`, `@negative` und `@regression` helfen dabei, bestimmte Testgruppen auszuwählen.
+Die Testsuite und der Testabdeckungsplan verwenden die englischen Bereichsnamen `Authentication`, `Inventory`, `Cart` und `Checkout`, damit sie sich leicht den Testordnern zuordnen lassen. Die Beschreibungen sind auf Deutsch; Test-IDs wie `AUTH-01` und Tags wie `@smoke`, `@negative` oder `@regression` bleiben unverändert.
 
 ## Vor der Ausführung
 
