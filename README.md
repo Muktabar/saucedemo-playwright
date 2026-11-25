@@ -2,9 +2,9 @@
 
 Dieses Projekt enthält End-to-End-Regressionstests für den [SauceDemo-Shop](https://www.saucedemo.com/). Die Tests sind mit TypeScript und Playwright Test geschrieben.
 
-Die Testsuite umfasst derzeit 29 Szenarien. Standardmäßig führt Playwright jedes Szenario in Chromium, Firefox und WebKit aus. Dadurch entstehen insgesamt 87 browserbezogene Testläufe.
+Die Testsuite umfasst derzeit 30 Szenarien. Standardmäßig führt Playwright jedes Szenario in Chromium, Firefox und WebKit aus. Dadurch entstehen insgesamt 90 browserbezogene Testläufe.
 
-Der zugehörige [Testabdeckungsplan (Excel)](docs/Testabdeckungsplan.xlsx) liegt im Verzeichnis `docs`. Er beschreibt alle 29 Szenarien einschließlich Priorität, Testdaten, Ablauf und erwartetem Ergebnis.
+Der zugehörige [Testabdeckungsplan (Excel)](docs/Testabdeckungsplan.xlsx) liegt im Verzeichnis `docs`. Er beschreibt alle 30 Szenarien einschließlich Priorität, Testdaten, Ablauf und erwartetem Ergebnis.
 
 ## Projektstruktur
 
@@ -13,7 +13,7 @@ tests/
 ├── auth/
 │   └── login.spec.ts       # Anmeldung, Validierung, Abmeldung und Zugriffskontrolle
 ├── inventory/
-│   └── products.spec.ts    # Produktliste, Sortierung und Produktdetails
+│   └── products.spec.ts    # Produktkarten, Sortierung und Produktdetails
 ├── cart/
 │   └── cart.spec.ts        # Produkte zum Warenkorb hinzufügen, daraus entfernen und prüfen
 ├── checkout/
